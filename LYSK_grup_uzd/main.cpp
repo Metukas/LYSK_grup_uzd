@@ -1,3 +1,13 @@
+﻿//Lysk grupinė užduotis
+/*
+Užduotis: parašykite programą, lygiagrečiai rikiuojančią pateiktus duomenis įterpties (insertion) ir
+skaidymo-suliejimo (merge) algoritmais.
+• Programa turėtų rikiuoti bet kokio tipo objektus, kuriems gali būti apibrėžtos rikiavimo taisyklės.
+◦ Jei išeina, skaičių (sveikųjų ir realiųjų) rikiavimą optimizuokite
+(jų rikiavimo taisykles palaiko pati C++ kalba).
+• Palyginkite algoritmų veikimą. Ar kuris nors iš jų tinkamesnis lygiagretinimui?*/
+
+
 #include "Sort.h"
 #include <iostream>
 #include <time.h>
