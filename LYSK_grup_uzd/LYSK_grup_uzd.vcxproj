@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mergeSort.cpp" />
     <ClCompile Include="sortTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,8 @@ int main()
 	cout << endl;
 
 	//bubble(arr, N);
-	sortInsert(arr, N);
+	//sortInsert(arr, N);
+	mergeSort(arr, N);
 
 	cout << "Po surikiavimo" << endl;
 	for (int i = 0; i < N; i++)
