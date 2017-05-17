@@ -12,7 +12,7 @@ int max(int x, int y)
 	}
 }
 
-void merge_helper(int *input, int left, int right, int *scratch)
+void merge_helper(int *input, int left, int right, int *tempArray)
 {
 	if (right == left + 1)
 	{
@@ -26,37 +26,37 @@ void merge_helper(int *input, int left, int right, int *scratch)
 
 		int l = left, r = left + midpoint_distance;
 
-		merge_helper(input, left, left + midpoint_distance, scratch);
-		merge_helper(input, left + midpoint_distance, right, scratch);
+		merge_helper(input, left, left + midpoint_distance, tempArray);
+		merge_helper(input, left + midpoint_distance, right, tempArray);
 
 		for (i = 0; i < length; i++)
 		{
 			if (l < left + midpoint_distance &&
 				(r == right || max(input[l], input[r]) == input[l]))
 			{
-				scratch[i] = input[l];
+				tempArray[i] = input[l];
 				l++;
 			}
 			else
 			{
-				scratch[i] = input[r];
+				tempArray[i] = input[r];
 				r++;
 			}
 		}
 		for (i = left; i < right; i++)
 		{
-			input[i] = scratch[i - left];
+			input[i] = tempArray[i - left];
 		}
 	}
 }
 
 int mergeSort(int *input, int size)
 {
-	int *scratch = (int *)malloc(size * sizeof(int));
-	if (scratch != NULL)
+	int *tempArray = (int *)malloc(size * sizeof(int));
+	if (tempArray != NULL)
 	{
-		merge_helper(input, 0, size, scratch);
-		free(scratch);
+		merge_helper(input, 0, size, tempArray);
+		free(tempArray);
 		return 1;
 	}
 	else
