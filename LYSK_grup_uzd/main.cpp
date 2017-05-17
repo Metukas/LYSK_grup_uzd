@@ -13,7 +13,6 @@ skaidymo-suliejimo (merge) algoritmais.
 #include <iostream>
 #include <time.h>
 #include <vector>
-#include "sortTemplate.cpp"
 
 using namespace std;
 
@@ -38,9 +37,9 @@ int main()
 	cout << endl;
 	cout << endl;
 
-	//bubble(arr, N);
-	//sortInsert(arr, N);
-	mergeSort(arr, N);
+	sortBubble(arr, N);
+	sortInsert(arr, N);
+	sortMerge(arr, N);
 
 	cout << "Po surikiavimo" << endl;
 	for (int i = 0; i < N; i++)

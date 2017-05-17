@@ -1,18 +1,15 @@
 #include <iostream>
 
-int max(int x, int y)
+template <class X> X getMax(X x, X y)
 {
-	if (x < y)
-	{
-		return x;
-	}
-	else
-	{
-		return y;
-	}
+	return x > y ? x : y;
+}
+template <class X> X getMin(X x, X y)
+{
+	return x < y ? x : y;
 }
 
-void merge_helper(int *input, int left, int right, int *tempArray)
+template <class X> void mergeSortHelper(X *input, int left, int right, X *tempArray)
 {
 	if (right == left + 1)
 	{
@@ -26,13 +23,13 @@ void merge_helper(int *input, int left, int right, int *tempArray)
 
 		int l = left, r = left + midpoint_distance;
 
-		merge_helper(input, left, left + midpoint_distance, tempArray);
-		merge_helper(input, left + midpoint_distance, right, tempArray);
+		mergeSortHelper(input, left, left + midpoint_distance, tempArray);
+		mergeSortHelper(input, left + midpoint_distance, right, tempArray);
 
 		for (i = 0; i < length; i++)
 		{
 			if (l < left + midpoint_distance &&
-				(r == right || max(input[l], input[r]) == input[l]))
+				(r == right || getMax(input[l], input[r]) == input[l]))
 			{
 				tempArray[i] = input[l];
 				l++;
@@ -50,12 +47,12 @@ void merge_helper(int *input, int left, int right, int *tempArray)
 	}
 }
 
-int mergeSort(int *input, int size)
+template <class X> int sortMerge(X *input, int size)
 {
-	int *tempArray = (int *)malloc(size * sizeof(int));
+	X *tempArray = (X *)malloc(size * sizeof(X));
 	if (tempArray != NULL)
 	{
-		merge_helper(input, 0, size, tempArray);
+		mergeSortHelper(input, 0, size, tempArray);
 		free(tempArray);
 		return 1;
 	}
