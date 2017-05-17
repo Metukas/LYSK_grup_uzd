@@ -21,6 +21,9 @@
     <ClCompile Include="sortTemplate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mergeSort.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sort.h">

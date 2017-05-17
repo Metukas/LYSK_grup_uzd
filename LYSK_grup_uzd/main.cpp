@@ -5,7 +5,8 @@ skaidymo-suliejimo (merge) algoritmais.
 • Programa turėtų rikiuoti bet kokio tipo objektus, kuriems gali būti apibrėžtos rikiavimo taisyklės.
 ◦ Jei išeina, skaičių (sveikųjų ir realiųjų) rikiavimą optimizuokite
 (jų rikiavimo taisykles palaiko pati C++ kalba).
-• Palyginkite algoritmų veikimą. Ar kuris nors iš jų tinkamesnis lygiagretinimui?*/
+• Palyginkite algoritmų veikimą. Ar kuris nors iš jų tinkamesnis lygiagretinimui?
+*/
 
 
 #include "Sort.h"
@@ -38,7 +39,8 @@ int main()
 	cout << endl;
 
 	//bubble(arr, N);
-	sortInsert(arr, N);
+	//sortInsert(arr, N);
+	mergeSort(arr, N);
 
 	cout << "Po surikiavimo" << endl;
 	for (int i = 0; i < N; i++)
