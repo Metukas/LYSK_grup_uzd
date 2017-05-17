@@ -142,9 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BubbleSort.cpp" />
+    <ClCompile Include="InsertSort.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mergeSort.cpp" />
-    <ClCompile Include="sortTemplate.cpp" />
+    <ClCompile Include="MergeSort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sort.h" />
