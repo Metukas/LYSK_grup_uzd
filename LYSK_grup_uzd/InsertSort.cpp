@@ -1,13 +1,26 @@
+#include <omp.h>
+
 template <class X> void sortInsert(X *arrayToSort, int arraySize)
 {
-	for (int i = 0; i < arraySize; i++)
+	int i;
+#pragma omp parallel for private(i)
+	for (i = 0; i < arraySize; i++)
 	{
 		X element = arrayToSort[i];
-		int j = i;
-		while (j > 0 && arrayToSort[j - 1] > element)
+		int j;
+		for (j = i; j > 0 && arrayToSort[j - 1] > element; j--)
 		{
 			arrayToSort[j] = arrayToSort[j - 1];
-			j--;
+		}
+		arrayToSort[j] = element;
+	}
+	for (i = 0; i < arraySize; i++)
+	{
+		X element = arrayToSort[i];
+		int j;
+		for (j = i; j > 0 && arrayToSort[j - 1] > element; j--)
+		{
+			arrayToSort[j] = arrayToSort[j - 1];
 		}
 		arrayToSort[j] = element;
 	}
