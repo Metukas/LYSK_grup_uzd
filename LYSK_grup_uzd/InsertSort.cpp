@@ -3,7 +3,7 @@
 template <class X> void sortInsert(X *arrayToSort, int arraySize)
 {
 	int i;
-#pragma omp parallel for private(i)
+	#pragma omp parallel for private(i)
 	for (i = 0; i < arraySize; i++)
 	{
 		X element = arrayToSort[i];
