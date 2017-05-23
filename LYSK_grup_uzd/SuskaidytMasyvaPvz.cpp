@@ -26,14 +26,14 @@ int suskaidyt()
 	cout << endl;
 
 	int chunkSize = size / threadNum;
-	int** pointerToArrays = (int**)malloc(threadNum * sizeof(int)); //padarom tiek suskaidytø masyvu, kiek yra branduoliø kompiutery
+	int** pointerToArrays = (int**)malloc(threadNum * sizeof(int)); //padarom tiek suskaidytÃ¸ masyvu, kiek yra branduoliÃ¸ kompiutery
 	
 	for (int i = 0; i < threadNum; i++)
 	{
 		int offset = ((size / threadNum) * i);
 		int* source = arr + offset;
-		pointerToArrays[i] = (int*)malloc(size * sizeof(int));
-		memcpy(pointerToArrays[i], source, chunkSize * sizeof(int)); //suskaidom masyvà arr á dalis á pointerToArrays[i]
+		pointerToArrays[i] = (int*)malloc(chunkSize * sizeof(int));
+		memcpy(pointerToArrays[i], source, chunkSize * sizeof(int)); //suskaidom masyvÃ  arr Ã¡ dalis Ã¡ pointerToArrays[i]
 	}
 
 	for (int i = 0; i < threadNum; i++)
