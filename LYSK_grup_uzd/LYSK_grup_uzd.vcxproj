@@ -149,6 +149,7 @@
     <ClCompile Include="MergeSort.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="N.h" />
     <ClInclude Include="Sort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

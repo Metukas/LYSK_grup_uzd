@@ -32,5 +32,8 @@
     <ClInclude Include="Sort.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="N.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,10 +13,10 @@ skaidymo-suliejimo (merge) algoritmais.
 #include <iostream>
 #include <time.h>
 #include <vector>
+#include "N.h"
 
 using namespace std;
 
-#define N 100
 
 int main()
 {
@@ -37,9 +37,9 @@ int main()
 	cout << endl;
 	cout << endl;
 
-	sortBubble(arr, N);
-	sortInsert(arr, N);
-	sortMerge(arr, N);
+	//sortBubble(arr, N);
+	sortInsert(arr);
+	//sortMerge(arr, N);
 
 	cout << "Po surikiavimo" << endl;
 	for (int i = 0; i < N; i++)
