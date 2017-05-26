@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <iostream>
 
-template <class X> void finalMerge(X* data, int* chunkSizes, int* offsets, X* tmp, int size, int threadNumb);
+template <class X> void finalMerge(X* data, int* chunkSizes, int* offsets, X* tmp, int size, int threadNum);
 
 template <class X> void sortInsert(X *data, int size, int threadNum)
 {
