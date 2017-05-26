@@ -154,7 +154,6 @@
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Merge.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="Tvarka.h" />
   </ItemGroup>

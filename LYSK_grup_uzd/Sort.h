@@ -1,4 +1,4 @@
-template <class X> void sortInsert(X *arrayToSort, int arraySize);
+template <class X> void sortInsert(X *arrayToSort, int arraySize, int threadNum);
 template <class X> void sortMergeParallel(X* data, int size, int threadNum);
 
 bool isPowerOf2(int num);

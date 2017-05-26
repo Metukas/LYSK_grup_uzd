@@ -1,7 +1,7 @@
 ﻿#include <cstdlib>
 #include <stdio.h>
 #include "Tvarka.h"
-#include "Merge.h"
+//#include "Merge.h"
 
 template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 {
@@ -29,9 +29,7 @@ template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 	int* offsets = (int*)malloc(threadNum * sizeof(int));
 	for (int i = 0; i < threadNum; i++)
 	{
-		//int kiekdalint = liekana - i;
 		int kiekdalint = i - threadNum + liekana;
-		//if (kiekdalint > 0)
 		if (kiekdalint >= 0)
 			chunkSizes[i] = chunkSize + 1;
 		else
@@ -59,27 +57,8 @@ template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 
 	delete[] pointerToTmp;
 
-	//padarom paskutinį merge sortą. (nesugalvojau, kaip geriau padaryti, todėl tiesiog harcodinau kelis case ¯\_(ツ)_/¯)
-	switch (threadNum)
-	{
-	case 2: //n=2
-		merge(data, n, tmp);
-		break;
-	case 4: //n=4
-		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
-		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
-		merge(data, n, tmp);
-		break;
-	case 8: //n=8
-		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
-		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
-		merge(data + offsets[4], chunkSizes[4] + chunkSizes[5], tmp);
-		merge(data + offsets[6], chunkSizes[6] + chunkSizes[7], tmp);
-		merge(data, chunkSizes[0] + chunkSizes[1] + chunkSizes[2] + chunkSizes[3], tmp);
-		merge(data + offsets[4], chunkSizes[4] + chunkSizes[5] + chunkSizes[6] + chunkSizes[7], tmp);
-		merge(data, n, tmp);
-		break;
-	}
+	//padarom paskutinį merge sortą. ¯\_(ツ)_/¯
+	finalMerge(data, chunkSizes, offsets, tmp, n, threadNum);
 }
 
 template <class X> void  mergesort(X * data, int n, X * tmp)
@@ -122,4 +101,30 @@ template <class X> void  merge(X * data, int n, X * tmp) // teisingai sumergina,
 		ti++; j++;
 	}
 	memcpy(data, tmp, n * sizeof(X));
+}
+
+//paskutinis merge sort. (nesugalvojau, kaip geriau padaryti, todėl tiesiog harcodinau kelis case ¯\_(ツ)_/¯)
+template <class X> void finalMerge(X* data, int* chunkSizes, int* offsets, X* tmp, int size, int threadNum)
+{
+
+	switch (threadNum)
+	{
+	case 2: //size=2
+		merge(data, size, tmp);
+		break;
+	case 4: //size=4
+		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
+		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
+		merge(data, size, tmp);
+		break;
+	case 8: //size=8
+		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
+		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
+		merge(data + offsets[4], chunkSizes[4] + chunkSizes[5], tmp);
+		merge(data + offsets[6], chunkSizes[6] + chunkSizes[7], tmp);
+		merge(data, chunkSizes[0] + chunkSizes[1] + chunkSizes[2] + chunkSizes[3], tmp);
+		merge(data + offsets[4], chunkSizes[4] + chunkSizes[5] + chunkSizes[6] + chunkSizes[7], tmp);
+		merge(data, size, tmp);
+		break;
+	}
 }

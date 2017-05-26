@@ -1,1 +1,1 @@
-g++ -Wall .\main.cpp .\InsertSort.cpp .\MergeSortParallel.cpp .\Utilities.cpp .\Sort.h .\Merge.h .\Tvarka.h -o exe.exe -fopenmp -fpermissive
+g++ -Wall .\main.cpp .\InsertSort.cpp .\MergeSortParallel.cpp .\Utilities.cpp .\Sort.h .\Tvarka.h -o exe.exe -fopenmp -fpermissive -O2

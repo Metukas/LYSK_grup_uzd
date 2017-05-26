@@ -8,11 +8,9 @@ skaidymo-suliejimo (merge) algoritmais.
 • Palyginkite algoritmų veikimą. Ar kuris nors iš jų tinkamesnis lygiagretinimui?
 */
 
-#include <typeinfo>
 #include "Sort.h"
 #include <iostream>
 #include <time.h>
-#include <vector>
 #include <omp.h>
 #include "Tvarka.h"
 
@@ -20,7 +18,7 @@ using namespace std;
 
 bool didejimoTvarka;
 
-#define N 100000000
+#define N 1000000
 
 int main()
 {
@@ -44,12 +42,12 @@ int main()
 
 	cout << "rikiuojama..." << endl;
 	clock_t tStart = clock();
-	//sortInsert(arr, N);
+	//sortInsert(arr, N, threadNum);
 	sortMergeParallel(arr, N, threadNum);
 	cout << "surikuota" << endl;
 	printf("Is viso praejo laiko: %.2fs\n", (double)(clock() - tStart) / CLOCKS_PER_SEC);
 
-	printList(arr, N);
+	//printList(arr, N);
 
 	return EXIT_SUCCESS;
 }
