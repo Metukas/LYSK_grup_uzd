@@ -8,48 +8,48 @@ skaidymo-suliejimo (merge) algoritmais.
 • Palyginkite algoritmų veikimą. Ar kuris nors iš jų tinkamesnis lygiagretinimui?
 */
 
+#include <typeinfo>
 #include "Sort.h"
 #include <iostream>
 #include <time.h>
 #include <vector>
 #include <omp.h>
+#include "Tvarka.h"
 
 using namespace std;
+
+bool didejimoTvarka;
 
 #define N 100000000
 
 int main()
 {
 	cout << "Hello" << endl;
+	didejimoTvarka = true;
+
 	int* arr = new int[N];
 	int threadNum;
+	generateList(arr, N);
+
 #pragma omp parallel
 	{
 #pragma omp master
 		threadNum = omp_get_num_threads();
 	}
 
-	srand(time(NULL));
-
 	//cout << "Pries surikiavima" << endl;
+	//printList(arr, N);
 
-	generate_list(arr, N);
+	cout << "Thread Num: " << threadNum << endl;
 
-	cout << endl;
-	cout << endl;
-	cout << endl;
-
+	cout << "rikiuojama..." << endl;
+	clock_t tStart = clock();
 	//sortInsert(arr, N);
 	sortMergeParallel(arr, N, threadNum);
+	cout << "surikuota" << endl;
+	printf("Is viso praejo laiko: %.2fs\n", (double)(clock() - tStart) / CLOCKS_PER_SEC);
 
-	cout << "Po surikiavimo int" << endl;
-	for (int i = 0; i < N; i++)
-	{
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-	cout << endl;
-	cout << endl;
+	printList(arr, N);
 
 	return EXIT_SUCCESS;
 }

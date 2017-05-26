@@ -36,7 +36,7 @@ int pow2RoundDown(int x)
 	return x - (x >> 1);
 }
 
-void generate_list(int * x, int n)
+void generateList(int * x, int n)
 {
 	int i, j, t;
 	for (i = 0; i < n; i++)
@@ -49,7 +49,7 @@ void generate_list(int * x, int n)
 	}
 }
 
-void print_list(int * x, int n)
+void printList(int * x, int n)
 {
 	int i;
 	for (i = 0; i < n; i++) {

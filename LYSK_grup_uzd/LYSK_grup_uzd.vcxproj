@@ -150,12 +150,13 @@
   <ItemGroup>
     <ClCompile Include="InsertSort.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="MergeSortParallel.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Merge.h" />
     <ClInclude Include="Sort.h" />
+    <ClInclude Include="Tvarka.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

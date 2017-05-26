@@ -21,9 +21,6 @@
     <ClCompile Include="InsertSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MergeSort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MergeSortParallel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,6 +30,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sort.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tvarka.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Merge.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,1 +1,0 @@
-g++ -Wall .\main.cpp .\Insert .\Sort.cpp .\mergeSort.cpp .\MergeSortParallel.cpp .\Sort.h .\Utilities.cpp -o exe.exe -fopenmp -fpermissive -std=c++11

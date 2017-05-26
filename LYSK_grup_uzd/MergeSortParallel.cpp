@@ -1,10 +1,7 @@
 ﻿#include <cstdlib>
-#include <iostream>
-
-using namespace std;
-
-template <class X> void  mergesort(X * data, int n, X * tmp);
-template <class X> void  merge(X * data, int n, X * tmp);
+#include <stdio.h>
+#include "Tvarka.h"
+#include "Merge.h"
 
 template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 {
@@ -53,7 +50,6 @@ template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 		pointerToTmp[i] = (X*)malloc(chunkSizes[i] * sizeof(X));
 	}
 
-	cout << "rikiuojama... \n";
 #pragma omp parallel for
 	for (int i = 0; i < threadNum; i++)
 	{
@@ -63,21 +59,18 @@ template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 
 	delete[] pointerToTmp;
 
-	//padarom paskutinį merge sortą. (nesugalvojau, kaip gražiau padaryti, todėl tiesiog harcodinau kelis case ¯\_(ツ)_/¯)
+	//padarom paskutinį merge sortą. (nesugalvojau, kaip geriau padaryti, todėl tiesiog harcodinau kelis case ¯\_(ツ)_/¯)
 	switch (threadNum)
 	{
-	case 2:
-		//n=2
+	case 2: //n=2
 		merge(data, n, tmp);
 		break;
-	case 4:
-		//n=4
+	case 4: //n=4
 		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
 		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
 		merge(data, n, tmp);
 		break;
-	case 8:
-		//n=8
+	case 8: //n=8
 		merge(data, chunkSizes[0] + chunkSizes[1], tmp);
 		merge(data + offsets[2], chunkSizes[2] + chunkSizes[3], tmp);
 		merge(data + offsets[4], chunkSizes[4] + chunkSizes[5], tmp);
@@ -87,8 +80,6 @@ template <class X> void sortMergeParallel(X* data, int size, int threadNum)
 		merge(data, n, tmp);
 		break;
 	}
-
-	cout << "baigta rikiuoti \n";
 }
 
 template <class X> void  mergesort(X * data, int n, X * tmp)
@@ -102,14 +93,14 @@ template <class X> void  mergesort(X * data, int n, X * tmp)
 }
 
 template <class X> void  merge(X * data, int n, X * tmp) // teisingai sumergina, kai masyvo pradžioje yra tiek pat arba mažiau elementų negu pabaigoje.
-{ 
+{
 	int i = 0;
 	int j = n / 2;
 	int ti = 0;
 
-	while (i<n / 2 && j<n)
+	while (i < n / 2 && j < n)
 	{
-		if (data[i] < data[j])
+		if (didejimoTvarka ? data[i] < data[j] : data[i] > data[j])
 		{
 			tmp[ti] = data[i];
 			ti++; i++;
@@ -120,12 +111,12 @@ template <class X> void  merge(X * data, int n, X * tmp) // teisingai sumergina,
 			ti++; j++;
 		}
 	}
-	while (i<n / 2) 
+	while (i < n / 2)
 	{
 		tmp[ti] = data[i];
 		ti++; i++;
 	}
-	while (j<n) 
+	while (j < n)
 	{
 		tmp[ti] = data[j];
 		ti++; j++;
