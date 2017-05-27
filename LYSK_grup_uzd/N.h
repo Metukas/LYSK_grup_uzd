@@ -1,1 +1,1 @@
-#define N 19
+#define N 50000

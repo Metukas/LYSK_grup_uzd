@@ -30,7 +30,7 @@ int main()
 	for (int i = 0; i < sizeof(arr)/sizeof(int); i++)
 	{
 		arr[i] = rand()  % 51;
-		cout << arr[i] << " ";
+		//cout << arr[i] << " ";
 	}
 
 	cout << endl;
@@ -42,10 +42,11 @@ int main()
 	//sortMerge(arr, N);
 
 	cout << "Po surikiavimo" << endl;
-	for (int i = 0; i < N; i++)
+	/*for (int i = 0; i < N; i++)
 	{
 		cout << arr[i] << " ";
-	}
+	}*/
+	
 	cout << endl;
 
 	return EXIT_SUCCESS;
