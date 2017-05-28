@@ -21,33 +21,26 @@ using namespace std;
 int main()
 {
 	cout << "Hello" << endl;
-	int arr[N];
+	vector<double> arr;
 	srand(time(NULL));
-
-	cout << sizeof(arr) / sizeof(int) << endl;
-
+	cout << N << endl;
 	cout << "Pries surikiavima" << endl;
-	for (int i = 0; i < sizeof(arr)/sizeof(int); i++)
+	for (int i = 0; i < N; i++)
 	{
-		arr[i] = rand()  % 51;
-		//cout << arr[i] << " ";
+		arr.insert(arr.end(), rand() % 51);
+		cout << arr[i] << " ";
 	}
-
 	cout << endl;
 	cout << endl;
 	cout << endl;
-
+	cout << "Po surikiavimo" << endl;
 	//sortBubble(arr, N);
 	sortInsert(arr);
 	//sortMerge(arr, N);
-
-	cout << "Po surikiavimo" << endl;
 	/*for (int i = 0; i < N; i++)
 	{
 		cout << arr[i] << " ";
 	}*/
-	
 	cout << endl;
-
 	return EXIT_SUCCESS;
 }

@@ -8,7 +8,7 @@
 #include <vector>
 #include <assert.h>
 
-template <class X> void sortInsert(X *arrayToSort)
+template <class X> void sortInsert(std::vector<X> &arrayToSort)
 {
 	clock_t tStart = clock();
 	int i, dalinimas;
@@ -148,7 +148,6 @@ template <class X> void sortInsert(X *arrayToSort)
 		}
 		#pragma omp master
 			std::cout << "Time taken: " << (double)(clock() - tStart) / CLOCKS_PER_SEC << " s\n";
-		std::cout << endl;
 		#pragma omp barrier
 		#pragma omp for ordered schedule(static,1)
 		for (int t = 0; t < a; ++t)
