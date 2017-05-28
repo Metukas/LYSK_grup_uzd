@@ -68,7 +68,6 @@ template <class X> void sortInsert(std::vector<X> &arrayToSort)
 			rodykle[j] = element;
 		}
 	}
-	
 	kelt = (double)N / a / a;
 	for (int ta = 0; ta < a; ta++)
 	{
